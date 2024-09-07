@@ -1,8 +1,13 @@
+import { tokenState } from "@recoil/atoms";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
 function LandingPage(): React.JSX.Element {
   const [kakaoUrl, setKakaoUrl] = useState<string | null>(null);
+  const navigator = useNavigate();
+  const token = useRecoilValue(tokenState);
 
   const fetchKakaoUrl = async () => {
     const { message, url }: { message: string; url: string } = await axios
@@ -19,7 +24,11 @@ function LandingPage(): React.JSX.Element {
   };
 
   useEffect(() => {
-    fetchKakaoUrl();
+    if (!token.accessToken || !token.refreshToken) {
+      fetchKakaoUrl();
+    } else {
+      navigator("/main");
+    }
   }, []);
 
   return (
