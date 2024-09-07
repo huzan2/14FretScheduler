@@ -1,9 +1,29 @@
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
 
-// recoil 정상 작동 확인용 코드
-type countType = number;
+const { persistAtom } = recoilPersist();
 
-export const countState = atom<countType>({
-  key: "countState",
-  default: 0,
+type TokenType = {
+  accessToken: string | null;
+  refreshToken: string | null;
+};
+
+type UserType = {
+  nickname: string | null;
+};
+
+export const tokenState = atom<TokenType>({
+  key: "tokenState",
+  default: {
+    accessToken: null,
+    refreshToken: null,
+  },
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const userState = atom<UserType>({
+  key: "userState",
+  default: {
+    nickname: null,
+  },
 });
