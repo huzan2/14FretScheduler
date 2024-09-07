@@ -8,6 +8,7 @@ export default defineConfig({
   server: { port: 3000 },
   resolve: {
     alias: [
+      { find: "@apis", replacement: path.resolve(__dirname, "src/apis") },
       { find: "@assets", replacement: path.resolve(__dirname, "src/assets") },
       {
         find: "@components",

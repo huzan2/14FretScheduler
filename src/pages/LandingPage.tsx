@@ -4,17 +4,23 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 
+type UrlResponse = {
+  message: string;
+  url: string;
+};
+
 function LandingPage(): React.JSX.Element {
   const [kakaoUrl, setKakaoUrl] = useState<string | null>(null);
   const navigator = useNavigate();
   const token = useRecoilValue(tokenState);
 
   const fetchKakaoUrl = async () => {
-    const { message, url }: { message: string; url: string } = await axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/kakao/url`)
-      .then((res) => res.data);
-    console.log(`fetchKakaoURL: ${message}`);
-    setKakaoUrl(url);
+    const response = await axios.get<UrlResponse>(
+      `${import.meta.env.VITE_BACKEND_URL}/kakao/url`
+    );
+
+    console.log(`fetchKakaoURL: ${response.data.message}`);
+    setKakaoUrl(response.data.url);
   };
 
   const goKakaoUrl = () => {

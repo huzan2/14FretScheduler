@@ -5,9 +5,9 @@ import AppRouter from "@router/AppRouter.tsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <RecoilRoot>
-      <AppRouter />
-    </RecoilRoot>
-  </StrictMode>
+  // <StrictMode>
+  <RecoilRoot>
+    <AppRouter />
+  </RecoilRoot>
+  // </StrictMode>
 );

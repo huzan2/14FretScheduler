@@ -1,12 +1,13 @@
+import { handleAutoLogin } from "@apis/handleAutoLogin";
 import ExampleComp from "@components/ExampleComp";
 import { tokenState } from "@recoil/atoms";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValue, useResetRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState } from "recoil";
 
 function MainPage(): React.JSX.Element {
+  const [token, setToken] = useRecoilState(tokenState);
   const resetToken = useResetRecoilState(tokenState);
-  const token = useRecoilValue(tokenState);
   const navigator = useNavigate();
 
   const handleLogout = () => {
@@ -15,9 +16,7 @@ function MainPage(): React.JSX.Element {
   };
 
   useEffect(() => {
-    if (!token.accessToken || !token.refreshToken) {
-      navigator("/");
-    }
+    handleAutoLogin(token, setToken, resetToken, navigator);
   }, []);
 
   return (
