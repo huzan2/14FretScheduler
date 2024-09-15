@@ -18,3 +18,19 @@
 ![Yarn](https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white)
 
 ---
+
+## Project Convention
+
+| **태그 이름** | **설명**                             |
+| ------------- | ------------------------------------ |
+| [Feat]        | 새로운 기능 구현                     |
+| [Design]      | CSS 등 디자인 변경                   |
+| [Refactor]    | 코드 리팩토링                        |
+| [Fix]         | 버그 픽스                            |
+| [Test]        | 테스트 코드 작성                     |
+| [Chore]       | 코드 수정/내부 파일 수정             |
+| [Docs]        | 문서 수정                            |
+| [Rename]      | 파일/폴더 이름 변경                  |
+| [Remove]      | 프로젝트 내 파일/폴더 이동 또는 삭제 |
+
+---
