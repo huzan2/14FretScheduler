@@ -4,6 +4,7 @@ import LandingPage from "@pages/LandingPage";
 import MainPage from "@pages/MainPage";
 import MyPage from "@pages/MyPage";
 import ErrorPage from "@pages/ErrorPage";
+import KakaoPage from "@pages/KakaoPage";
 
 function AppRouter(): React.JSX.Element {
   return (
@@ -12,6 +13,7 @@ function AppRouter(): React.JSX.Element {
         <Route path="/" element={<LandingPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/callback/kakao" element={<KakaoPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

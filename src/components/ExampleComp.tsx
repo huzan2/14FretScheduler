@@ -1,20 +1,17 @@
-import { countState } from "@recoil/atoms";
+import { tokenState, userState } from "@recoil/atoms";
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
 function ExampleComp(): React.JSX.Element {
-  // recoil 정상 작동 확인용 코드
-  const [count, setCount] = useRecoilState(countState);
-
-  const handleCount = () => {
-    setCount((prev) => (prev += 1));
-  };
+  const user = useRecoilValue(userState);
+  const token = useRecoilValue(tokenState);
 
   return (
     <div>
-      <p>Example Component</p>
-      <p>{count}</p>
-      <button onClick={handleCount}>증가 버튼</button>
+      <p>ExampleComp</p>
+      <p>user: {user.nickname}</p>
+      <p>accessToken: {token.accessToken}</p>
+      <p>refreshToken: {token.refreshToken}</p>
     </div>
   );
 }
